@@ -1,6 +1,7 @@
 package ex3;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class MainEx3 {
 
@@ -17,6 +18,10 @@ public class MainEx3 {
 
         System.out.println(telephoneBook);
 
+        System.out.println(searchByNumber("00032434"));
+        System.out.println(searchByName("Gino"));
+        print();
+
 
     }
 
@@ -27,4 +32,28 @@ public class MainEx3 {
     static void deleteRecord(String name) {
         telephoneBook.remove(name);
     }
+
+    static String searchByNumber(String phoneNumber) {
+        if (telephoneBook.containsValue(phoneNumber)) {
+            Set<String> names = telephoneBook.keySet();
+            for (String name : names) {
+                if (phoneNumber.equals(telephoneBook.get(name))) return name;
+
+            }
+        } else {
+            System.out.println("Numero non trovato");
+            return "Numero non trovato";
+        }
+
+        return "Numero non trovato";
+    }
+
+    public static String searchByName(String name) {
+        return telephoneBook.get(name);
+    }
+
+    public static void print() {
+        System.out.println(telephoneBook);
+    }
+
 }
